@@ -1,2 +1,2 @@
 # crackmes
-Successful crackmes with instructions.
+Solved crackmes with instructions/solutions.

@@ -8,7 +8,9 @@ RE Tools:	Ghidra
 
 Test the program:
     ./variables_example 
-    --> Please prvide the 8 character keycode 
+    
+--> Please prvide the 8 character keycode 
+
 Open the program with Ghidra and inspect the main function with Function Graph tool and C decompiler
 
 Inspect the decompiled P-code and rename the variables for better readability:
@@ -49,7 +51,8 @@ to get the key, let's simplify the expression a bit:<br>
 `    <br>--> there should be 8 such key_character's..
 
 What are then XorMe and globalVar?
-    --> by left click on the global variables we can understand the types and values
+   
+ --> by left click on the global variables we can understand the types and values
 
 globalVar is a string "KeYpress" - lets rename it into 'str' 
 
@@ -57,9 +60,9 @@ XorMe is a hex number 0xDEADBEEFFACECAFE. <br>To get the type, lets convert the 
     https://www.rapidtables.com/convert/number/hex-to-decimal.html
 
     0xDEADBEEFFACECAFE = 16045690985305262846
-        --> it's unsigned long
+--> it's unsigned long
 
-
+<br>
 Lets decode the key with a simple C script:
 
     #include <stdio.h>

@@ -67,11 +67,12 @@ Lets decode the key with a simple C script:
 
       int main(void)
       {
-           int 			i;
-           unsigned long	tmp;
-           char			new;
-           unsigned long 	XorMe = 0xDEADBEEFFACECAFE;
-           char str[] = "KeYpress";	
+           int 			    i;
+           unsigned long	            tmp;
+           char			    new;
+           unsigned long 	XorMe =     0xDEADBEEFFACECAFE;
+           char str[]               =   "KeYpress";	
+
            for (i = 0; i < 8; i = i + 1)
            {
                tmp = XorMe >> ((i << 3) & 0x3f);

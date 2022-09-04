@@ -6,7 +6,7 @@ RE Tools:	Ghidra
 
 <br>**Solution:**
 
-You must pass all 3 Conditions to get the key:
+You must pass all 3 Conditions to get the 2 key values:
 
 1. (num_2 < num_1)
 2. (num_2 << 1 > num_1)

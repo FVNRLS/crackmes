@@ -16,6 +16,7 @@ RE Tools:	Ghidra
 * Inspect the decompiled P-code and rename the variables for better readability:
 
 
+
     int main(int argc,char **argv)
     {
         int ret;

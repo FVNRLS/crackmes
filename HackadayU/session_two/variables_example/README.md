@@ -43,7 +43,8 @@ Inspect the decompiled P-code and rename the variables for better readability:
 The answer is encrypted in the line:<br>
    ` ((char)((char)(XorMe >> ((byte)(i << 3) & 0x3f)) + globalVar[i] + '\x01') != argv[1][i])`
 <br>
-    to get the key, let's simplify the expression a bit:<br>
+    
+to get the key, let's simplify the expression a bit:<br>
 `    key_character = (XorMe >> ((byte)(i << 3) & 0x3f)) + globalVar[i] + '\x01')
 `    <br>--> there should be 8 such key_character's..
 
@@ -64,7 +65,7 @@ Lets decode the key with a simple C script:
     `#include <stdio.h>`
 
 
-      `int main(void)
+      int main(void)
       {
            int 			i;
            unsigned long	tmp;
@@ -78,7 +79,7 @@ Lets decode the key with a simple C script:
                printf("%c\n", new);
            }
            return 0;
-       }`
+       }
 
 Output will be:
     J

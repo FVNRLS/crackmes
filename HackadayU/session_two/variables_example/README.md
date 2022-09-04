@@ -92,8 +92,7 @@ Output will be:
     !
     R
 
-In order to process the key in bash terminal, wrap it in '':
-'J0(kb$!R'
+In order to process the key in bash terminal, wrap it: 'J0(kb$!R'
 
 ./variables_example 'J0(kb$!R'
     --> Proper keycode supplied, well done!

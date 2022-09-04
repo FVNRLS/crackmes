@@ -62,7 +62,7 @@ XorMe is a hex number 0xDEADBEEFFACECAFE. <br>To get the type, lets convert the 
 
 Lets decode the key with a simple C script:
 
-    `#include <stdio.h>`
+    #include <stdio.h>
 
 
       int main(void)

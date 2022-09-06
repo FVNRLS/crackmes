@@ -1,24 +1,68 @@
-Source:		https://crackmes.one/crackme/6296c1ff33c5d45b75903c0f
-Author:		b3nd3p
-Level:		easy
+Source:		https://hackaday.io/course/172292-introduction-to-reverse-engineering-with-ghidra
+
+Author:		Hackaday.io
+
 RE Tools:	Ghidra
 
-Solution:
+<br>**Solution:**
 
-1)	Test the program: 
-	./first
-	Type in any number and look at the output. Wrong output will give you the message: "try again!!!try more and u can"
-2) 	Select all code and disassemble 
-3)	Search for the string and it's location in the program --> function: bool check
-4)	Navigate inside the function bool check(int param_1,int param_2)
-	The function compares 2 parameters - user input and a secret key value. The key value is not published in the function, so we need to go 1 layer higher to understand where the parameters come from.
-5)	In the program tree -> functions, open: main
-	the function check is called in the main function after 2 parsing funtions: entry1 and input. input is the user input and entry1 should be the key value to compare with.
-6)	Inspect entry1 function.
-	Key value is hidden in this line of code:
-	uVar2 = sum.0(1000,300,0x1e,7);	
-	0x1e is hexadecimal and should be converted.
-7) 	Calculate the sum: 1000 + 300 + 30 + 7 = 1337
-8) 	Enter the key to ./first prompt
-	--> Enjoy ))
-	u can do this, congrut well done go next
+Key requirements:
+
+* only 1 argument
+* the key is 8 chars long
+* the key is derived from this line:
+
+
+        for (i = 0; i < 8; i = i + 1) 
+        {
+        if ((byte)("skeletor"[i] ^ mod[i]) != argv[1][i])
+          puts("Wrong answer\r");
+        }
+
+to get the key lets write a C script:
+
+    #include <stdio.h>
+    #include <string.h>
+    #include <malloc.h>
+    
+    int	main(void )
+    {
+        char 	*str = "skeletor";
+        char	*key;
+        int		len;
+        int		i;
+        char 	c;
+        int     mod [8];
+
+        mod[0] = 8;
+        mod[1] = 9;
+        mod[2] = 10;
+        mod[3] = 11;
+        mod[4] = 12;
+        mod[5] = 13;
+        mod[6] = 14;
+        mod[7] = 15;
+
+        len = strlen(str);
+        key = malloc(sizeof(char)*len);
+        i = 0;
+        while (i < len)
+        {
+            c = str[i] ^ mod[i];
+            key[i] = c;
+            i++;
+        }
+        printf("%s\n", key);
+        free(key);
+        key = NULL;
+        return (0);
+    }
+
+The answer is: {bogiya}
+
+    ./skele {bogiya}
+    Correct! You have the power!
+
+
+    
+    
